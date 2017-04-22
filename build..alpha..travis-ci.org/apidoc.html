@@ -1,0 +1,134 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+    >superagent-as-promised (v4.0.0)</a>
+</h1>
+<h4>SuperAgent with a Promise twist</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.superagent-as-promised">module superagent-as-promised</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.superagent-as-promised.superagent-as-promised">
+            function <span class="apidocSignatureSpan"></span>superagent-as-promised
+            <span class="apidocSignatureSpan">(Request, Promise)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.superagent-as-promised" id="apidoc.module.superagent-as-promised">module superagent-as-promised</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.superagent-as-promised.superagent-as-promised" id="apidoc.element.superagent-as-promised.superagent-as-promised">
+        function <span class="apidocSignatureSpan"></span>superagent-as-promised
+        <span class="apidocSignatureSpan">(Request, Promise)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">superagent-as-promised = function (Request, Promise) {
+  if (Promise == null) {
+    Promise = NativePromise;
+  }
+  Request.Request.prototype.endAsync = function() {
+    return new Promise((function(_this) {
+      return function(resolve, reject) {
+        var error, error1;
+        try {
+          return _this.end(function(error, response) {
+            if (error) {
+              reject(error);
+              return;
+            }
+            if (response.error) {
+              reject(response.error);
+              return;
+            }
+            return resolve(response);
+          });
+        } catch (error1) {
+          error = error1;
+          return reject(error);
+        }
+      };
+    })(this));
+  };
+  Request.Request.prototype.then = function() {
+    var ref;
+    return (ref = this.endAsync()).then.apply(ref, arguments);
+  };
+  Request.Request.prototype[&#x22;catch&#x22;] = function() {
+    var ref;
+    return (ref = this.endAsync())[&#x22;catch&#x22;].apply(ref, arguments);
+  };
+  return Request;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
